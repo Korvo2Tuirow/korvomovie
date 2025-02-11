@@ -78,12 +78,8 @@ export default function HLSPlayer() {
 
     return (
         <div className="flex flex-col items-center gap-5 mb-5">
-            <h2>Player HLS com Limpeza de Memória</h2>
-            <div className="flex justify-center gap-6">
-                <button className="border p-3 bg-blue-900 max-w-fit rounded-md shadow-black shadow-md hover:scale-105">Discovery Turbo</button>
-                <button className="border p-3 bg-blue-900 max-w-fit rounded-md shadow-black shadow-md hover:scale-105">Tele Cine </button>
-                <button className="border p-3 bg-blue-900 max-w-fit rounded-md shadow-black shadow-md hover:scale-105">HBO</button>
-            </div>
+            <h2>Korvo FLiX</h2>
+       
             <video ref={videoRef} controls autoPlay width="80%" height="auto" />
         </div>
     );
