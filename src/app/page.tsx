@@ -9,7 +9,7 @@ export default function M3U8Player() {
     <div>
       <h2>Streaming HLS (M3U8)</h2>
       <ReactPlayer 
-        url="https://canalzinhu.fazoeli.co.za/token/3aed46506b9c053685157a56814e34de/megaflix.m3u8" // Link de exemplo
+        url="https://canalzinhu.fazoeli.co.za/token/a40b5a86fb17c64f67ad657e1a9b8930/megaflix.m3u8" // Link de exemplo
         playing
         controls
         width="100%"
