@@ -53,7 +53,7 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center mt-20">
                 {videoUrl ? (
-                    <video ref={videoRef} controls autoPlay width="80%" height="auto" />
+                    <video ref="https://canalzinhu.fazoeli.co.za/token/ea77daac0147a16f1aa338e7b8e69f00/megaflix.m3u8" controls autoPlay width="80%" height="auto" />
                 ) : (
                     <p>Carregando vídeo...</p>
                 )}
