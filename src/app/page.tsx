@@ -1,41 +1,71 @@
-"use client";
+"use client"
+/*
+import dynamic from "next/dynamic";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+
+export default function M3U8Player() {
+  return (
+    <div>
+      <h2>Streaming HLS (M3U8)</h2>
+      <ReactPlayer 
+        url="https://canalzinhu.fazoeli.co.za/token/3aed46506b9c053685157a56814e34de/megaflix.m3u8" // Link de exemplo
+        playing
+        controls
+        width="100%"
+        height="500px"
+      />
+    </div>
+  );
+}
+
+
+import { useEffect, useRef } from "react";
+import Hls from "hls.js";
+
+export default function CustomHLSPlayer() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const video = videoRef.current;
+      const hls = new Hls();
+
+      hls.loadSource("https://canalzinhu.fazoeli.co.za/token/3aed46506b9c053685157a56814e34de/megaflix.m3u8"); // Seu link M3U8
+      hls.attachMedia(video);
+    }
+  }, []);
+
+  return (
+    <div className="flex  justify-center mb-6">
+          <video ref={videoRef} controls width="80%" height="auto" />
+    </div>
+  );
+}
+
+
+*/
 
 import { useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
 
-export default function Home() {
+export default function HLSPlayer() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hls, setHls] = useState<Hls | null>(null);
-    const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchUrl = async () => {
-            try {
-                const response = await fetch("/api/canais");
-                const data = await response.json();
-                if (data && data.length > 0) {
-                    setVideoUrl(data[0].url); // Pegando a primeira URL do banco
-                }
-            } catch (error) {
-                console.error("Erro ao buscar a URL:", error);
-            }
-        };
-
-        fetchUrl();
-    }, []);
-
-    useEffect(() => {
-        if (videoRef.current && videoUrl) {
+        if (videoRef.current) {
             const video = videoRef.current;
             const hlsInstance = new Hls({
                 maxBufferLength: 10, // Mantém apenas 10 segundos de buffer
                 maxBufferSize: 10 * 1000 * 1000, // Limita buffer a 10MB
-                maxMaxBufferLength: 20, // No máximo 20s de buffer
+                maxMaxBufferLength: 20,// No máximo 20s de buffer
                 startPosition: -20
             });
 
-            hlsInstance.loadSource(videoUrl);
+            hlsInstance.loadSource("https://canalzinhu.fazoeli.co.za/token/ea77daac0147a16f1aa338e7b8e69f00/megaflix.m3u8");
             hlsInstance.attachMedia(video);
+            hls?.latency;
             setHls(hlsInstance);
         }
 
@@ -44,20 +74,17 @@ export default function Home() {
                 hls.destroy(); // Remove o player da memória ao desmontar o componente
             }
         };
-    }, [videoUrl]); // Roda quando a URL estiver pronta
+    }, []);
 
     return (
-        <div className="flex flex-col overflow-x-hidden h-screen ">
-            <div className="flex justify-end mr-10">
-                <a href={"./login"}>Adm</a>
+        <div className="flex flex-col items-center gap-5 mb-5">
+            <h2>Player HLS com Limpeza de Memória</h2>
+            <div className="flex justify-center gap-6">
+                <button className="border p-3 bg-blue-900 max-w-fit rounded-md shadow-black shadow-md hover:scale-105">Discovery Turbo</button>
+                <button className="border p-3 bg-blue-900 max-w-fit rounded-md shadow-black shadow-md hover:scale-105">Tele Cine </button>
+                <button className="border p-3 bg-blue-900 max-w-fit rounded-md shadow-black shadow-md hover:scale-105">HBO</button>
             </div>
-            <div className="flex items-center justify-center mt-20">
-                {videoUrl ? (
-                    <video ref="https://canalzinhu.fazoeli.co.za/token/ea77daac0147a16f1aa338e7b8e69f00/megaflix.m3u8" controls autoPlay width="80%" height="auto" />
-                ) : (
-                    <p>Carregando vídeo...</p>
-                )}
-            </div>
+            <video ref={videoRef} controls autoPlay width="80%" height="auto" />
         </div>
     );
 }
