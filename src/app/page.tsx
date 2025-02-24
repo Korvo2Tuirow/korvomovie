@@ -63,7 +63,7 @@ export default function HLSPlayer() {
                 startPosition: -20
             });
 
-            hlsInstance.loadSource("https://canalzinhu.fazoeli.co.za/token/ea77daac0147a16f1aa338e7b8e69f00/megaflix.m3u8");
+            hlsInstance.loadSource("https://hojenaocara.site/DISCOVERY/tracks-v1a1/mono.m3u8");
             hlsInstance.attachMedia(video);
             hls?.latency;
             setHls(hlsInstance);
