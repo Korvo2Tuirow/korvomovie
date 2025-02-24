@@ -63,7 +63,7 @@ export default function HLSPlayer() {
                 startPosition: -20
             });
 
-            hlsInstance.loadSource("https://hojenaocara.site/DISCOVERY/tracks-v1a1/mono.m3u8");
+            hlsInstance.loadSource("");
             hlsInstance.attachMedia(video);
             hls?.latency;
             setHls(hlsInstance);
