@@ -63,7 +63,7 @@ export default function HLSPlayer() {
                 startPosition: -20
             });
 
-            hlsInstance.loadSource("");
+            hlsInstance.loadSource("https://bk2y7tof8rrl.milocdn.com/hls2/01/02488/6i0kyms61dwx_,l,n,.urlset/master.m3u8?t=O0r6jyOYbnV1eq-2tAHBUrKIkRCdSmmiuV0CfN22sWg&s=1740464436&e=129600&f=12444197&srv=LMelv5cALWcz&i=0.4&sp=500&p1=LMelv5cALWcz&p2=LMelv5cALWcz&asn=28649");
             hlsInstance.attachMedia(video);
             hls?.latency;
             setHls(hlsInstance);
